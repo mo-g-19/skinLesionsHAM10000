@@ -77,8 +77,7 @@ Key observations:
 - Hardware: **Google Colab GPU**  
 - Optimizer: Adam  
 - Learning rates:  
-  - 1e-4 (frozen stage)  
-  - 1e-5 (fine-tuning)  
+  - 1e-4 (frozen stage)   
 - Batch size: 32  
 - Epochs: 15  
 
@@ -91,36 +90,80 @@ Both models used:
 
 ## Repository Structure
 
+```text
 skinLesionsHAM10000/
-│
 ├── notebooks/
-│ └── skin_lesion_classification.ipynb
+│   └── skin_lesion_classification.ipynb
 │
 ├── models/
-│ ├── resnet50_lr4_best.keras
-│ └── resnet50_se_lr4_best.keras
+│   ├── resnet50_lr4_best.keras
+│   └── resnet50_se_lr4_best.keras
 │
 ├── results/
-│ ├── confusion_matrix_resnet50_base.png
-│ ├── confusion_matrix_resnet50_channel.png
-│ └── metrics.txt
+│   ├── confusion_matrix_resnet50_base.png
+│   ├── confusion_matrix_resnet50_channel.png
+│   └── metrics.txt
 │
-├── README.md
+└── README.md
+```
 
 
 
 ---
 
 ## How to Run
+1) You must download the dataet separately from Kaggle:
 
-Open the notebook in Google Colab:
+**Dataset link:**  
+https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
 
-```python
-from google.colab import drive
-drive.mount('/content/drive')
+After downloading, you should have a ZIP file containing at least:
+  HAM10000_metadata.csv
+  HAM10000_images_part_1/
+  HAM10000_images_part_2/
 
-Then run all cells in:
-notebooks/skin_lesion_classification.ipynb
+2) After downloading it from Kaggle, upload it to GoogleDrive.
+In GoogleDrive, it should be:
+  drive/MyDrive/archive.zip
+
+3) Open a notebook in Google Colab:
+
+in the first bubble, run:
+  !git clone https://github.com/mo-g-19/skinLesionsHAM10000
+  %cd /content/skinLesionsHAM10000/
+  !ls
+
+in the second bubble, run:
+  pip install -r requirements.txt
+
+in the third bubble, run:
+  notebooks/main_experiments.ipynb
+
+This one call should:
+- Mount Google Drive
+- Extract the dataset ZIP from Drive
+- Run prepare_ham10000_splits.py
+- create persistent train/bal/test folders on Drive
+- Set DATA_ROOT for the rest of the notebook
+
+---
+
+## Requirements
+
+- Google Colab (recommended)
+- Python 3.9+
+- A Google account (for Drive storage)
+
+All Python dependencies are listed in `requirements.txt`.
+
+---
+
+## Dataset: HAM10000
+
+The HAM10000 dataset is **not included** in this repository due to size and licensing constraints.
+
+
+
 
 ## References
 
