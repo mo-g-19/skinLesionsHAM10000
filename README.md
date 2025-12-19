@@ -123,17 +123,21 @@ After downloading, you should have a ZIP file containing at least:
   HAM10000_images_part_2/
 
 2) After downloading it from Kaggle, upload it to GoogleDrive.
-In GoogleDrive, it should be:
+In GoogleDrive, the final path should be:
   drive/MyDrive/archive.zip
 
 3) Open a notebook in Google Colab:
+- click File -> Open Notebook
+- Selec GitHub tab
+- Enter this repository URL: mo-g-19/skinLesionsHAM10000
+- Click on notebooks/main_experiments.ipynb to open it
 
-in the first bubble, run:
+in the first bubble, clone the repository, run:
   !git clone https://github.com/mo-g-19/skinLesionsHAM10000
   %cd /content/skinLesionsHAM10000/
   !ls
 
-in the second bubble, run:
+in the second bubble, install required Python packages, run:
   pip install -r requirements.txt
 
 in the third bubble, run:
@@ -147,6 +151,13 @@ This one call should:
 - Set DATA_ROOT for the rest of the notebook
 
 ---
+
+## Troubleshooting
+Problem: "archive.zip not found in Google Drive"
+Solution:
+- Double-check you've uploaded archive.zip to the root of "My Drive"
+- The path should be exactly: "MyDrive/archive.zip"
+- Try refreshing your Drive or re-uploading the file
 
 ## Requirements
 
@@ -174,3 +185,6 @@ Esteva et al., Dermatologist-level classification of skin cancer, Nature, 2017
 Tschandl et al., The HAM10000 Dataset, 2018
 
 (Full citations included in the project report.)
+
+## License
+This project is for educational and resarch purposes. Please cite the original HAM100000 dataset if you use this code in your research
